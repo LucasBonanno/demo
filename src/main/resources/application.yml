@@ -1,5 +1,2 @@
-env:
-  NAME: ${{ secrets.NAME }}
-
 spring:
   name: ${{ env.NAME }}
