@@ -16,7 +16,9 @@ jobs:
           distribution: 'adopt'
           java-version: 11
       - name: Run Test
-        run: mvn spring-boot:run
+        run: |
+          echo ${{ env.NAME }}
+          mvn spring-boot:run
         env:
           NAME: ${{ secrets.NAME }}
 
