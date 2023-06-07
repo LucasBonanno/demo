@@ -1,3 +1,5 @@
+env:
+  NAME: ${{ secrets.NAME }}
+
 spring:
-  name: test_name_via_git_hub
-#  name: ${{ secrets.NAME }}
+  name: ${{ env.NAME }}
