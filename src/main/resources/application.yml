@@ -1,2 +1,2 @@
 spring:
-  name: ${{ env.NAME }}
+  name: demo_mano_gusta_application_sem_env
