@@ -12,7 +12,7 @@ public class ConfigManoGusta {
 
     @Bean
     public void nomeTest(){
-        System.out.println("TESTE COM NOME: " + name );
+        System.out.println("TESTE COM NOME: " + name);
     }
 
 }
