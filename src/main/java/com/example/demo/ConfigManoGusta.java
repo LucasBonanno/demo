@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration // TODO -> só funfa com @bean
 public class ConfigManoGusta {
 
-    @Value( "${NAME_VARIABLE}" )
+    @Value( "${NAME}" )
     private String name;
 
     @Bean
