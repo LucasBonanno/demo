@@ -5,6 +5,7 @@ on:
   pull_request:
     branches: [ main ]
 
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,6 +20,10 @@ jobs:
         run: |
           echo ${{ env.NAME }}  
           mvn spring-boot:run
+          curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" 
+          -H "Accept: application/vnd.github.everest-preview+json" 
+          -H "Content-Type: application/json" 
+          https://api.github.com/repos/LucasBonanno/desafio-api-alelo-lucas-bonanno-casanova/dispatches --data '{"event_type": "build_application" }'
         env:
           NAME: ${{ vars.NAME_VARIABLE }}
 
