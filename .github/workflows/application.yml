@@ -21,7 +21,7 @@ jobs:
           mvn spring-boot:run
           # Clone the project B repository
           git clone https://github.com/LucasBonanno/desafio-api-alelo-lucas-bonanno-casanova.git
-          cd project-b
+          cd desafio-api-alelo-lucas-bonanno-casanova
           # Run the tests
           mvn test
         env:
@@ -32,6 +32,7 @@ jobs:
           name: test-results
           path: evidences/report.json
   check-results:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Download Artifacts
