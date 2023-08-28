@@ -26,7 +26,7 @@ jobs:
         run: |
           echo "Test Results: $(cat test-results.json)"
       - name: Check Results
-        uses: actions/github-check-run@v2
+        uses: actions/check-run@v2
         with:
           check_run_name: Test Results
           check_run_output: ${{ steps.get-test-results.outputs.test-results }}
