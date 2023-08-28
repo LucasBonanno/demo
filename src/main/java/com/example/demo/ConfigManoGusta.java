@@ -10,9 +10,12 @@ public class ConfigManoGusta {
     @Value( "${NAME}" )
     private String name;
 
+    @Value( "${NAME}" )
+    private String name2;
+
     @Bean
     public void nomeTest(){
-        System.out.println("TESTE COM NOME: " + name );
+        System.out.println("TESTE COM NOME: " + name + name2 );
     }
 
 }
