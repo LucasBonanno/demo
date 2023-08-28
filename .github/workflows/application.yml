@@ -43,7 +43,7 @@ jobs:
           # Get the test results
           echo "Test Results: $(cat test-results.json)"
       - name: Comment Results
-        uses: actions/comment@v2
+        uses: peter-evans/create-or-update-comment@v3
         with:
           body: '*Test Results:*
 
