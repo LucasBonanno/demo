@@ -42,9 +42,11 @@ jobs:
         run: |
           # Get the test results
           echo "Test Results: $(cat test-results.json)"
+      - name: Comment Results
+        uses: actions/comment@v2
+        with:
+          body: '*Test Results:*
 
-    body: |
-      *Test Results:*
-      ${{ steps.check-results.outputs.test-results }}
+          ${{ steps.check-results.outputs.test-results }}
 
-      *Warning:* The tests in project B failed
+          *Warning:* The tests in project B failed'
