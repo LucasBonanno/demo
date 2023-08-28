@@ -1,0 +1,25 @@
+#name: Test Spring
+#on:
+#  push:
+#    branches: [ main ]
+#  pull_request:
+#    branches: [ main ]
+#
+#
+#jobs:
+#  build:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v3
+#      - name: Set up Java
+#        uses: actions/setup-java@v3
+#        with:
+#          distribution: 'adopt'
+#          java-version: 11
+#      - name: Run Test
+#        run: |
+#          echo ${{ env.NAME }}
+#          mvn spring-boot:run
+#          curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/LucasBonanno/desafio-api-alelo-lucas-bonanno-casanova/dispatches --data '{"event_type": "build_application" }'
+#        env:
+#          NAME: ${{ vars.NAME_VARIABLE }}
