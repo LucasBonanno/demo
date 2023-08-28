@@ -5,13 +5,10 @@ import org.springframework.context.annotation.Bean;
 
 @org.springframework.context.annotation.Configuration // TODO -> só funfa com @bean
 public class Configuration {
-
-   @Value( "${NAME}" )
+    @Value( "${NAME}" )
     private String name2;
-
     @Bean
     public void nomeTest(){
         System.out.println("TESTE COM NOME: " + name2 );
     }
-
 }
