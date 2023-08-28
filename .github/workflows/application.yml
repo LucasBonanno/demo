@@ -26,12 +26,12 @@ jobs:
           mvn test
         env:
           NAME: ${{ vars.NAME_VARIABLE }}
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: test-results
-          path: target/evidences/report.json
+#      - name: Upload Artifacts
+#        uses: actions/upload-artifact@v3
+#        if: always()
+#        with:
+#          name: test-results
+#          path: target/evidences/report.json
   check-results:
     needs: build
     runs-on: ubuntu-latest
