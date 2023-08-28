@@ -28,7 +28,9 @@ jobs:
           NAME: ${{ vars.NAME_VARIABLE }}
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
+        if: always()
         with:
+          access-token: ${{ secrets.GITHUB_TOKEN }}
           name: test-results
           path: evidences/report.json
   check-results:
