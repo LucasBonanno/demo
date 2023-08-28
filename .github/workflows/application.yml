@@ -31,7 +31,7 @@ jobs:
         if: always()
         with:
           name: test-results
-          path: ./evidences/report.json
+          path: target/evidences/report.json
   check-results:
     needs: build
     runs-on: ubuntu-latest
