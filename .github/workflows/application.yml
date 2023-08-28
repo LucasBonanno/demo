@@ -1,7 +1,9 @@
 name: Test Spring
 on:
+  push:
+    branches: [ main, test ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, test ]
 
 jobs:
   build:
