@@ -1,7 +1,5 @@
 name: Test Spring
 on:
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -19,16 +17,32 @@ jobs:
         run: |
           echo ${{ env.NAME }}  
           mvn spring-boot:run
-          curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/LucasBonanno/desafio-api-alelo-lucas-bonanno-casanova/dispatches --data '{"event_type": "build_application" }'
+          # Clone the project B repository
+          git clone https://github.com/LucasBonanno/desafio-api-alelo-lucas-bonanno-casanova.git
+          cd project-b
+          # Run the tests
+          mvn test
         env:
           NAME: ${{ vars.NAME_VARIABLE }}
-      - name: Get Test Results
-        run: |
-          echo "Test Results: $(cat test-results.json)"
-      - name: Check Results
-        uses: github/actions/check-run@v3
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
         with:
-          check_run_name: Test Results
-          check_run_output: ${{ steps.get-test-results.outputs.test-results }}
+          name: test-results
+          path: evidences/report.json
+  check-results:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: test-results
+      - name: Display Test Results
+        run: |
+          # Get the test results
+          echo "Test Results: $(cat test-results.json)"
 
+    body: |
+      *Test Results:*
+      ${{ steps.check-results.outputs.test-results }}
 
+      *Warning:* The tests in project B failed
