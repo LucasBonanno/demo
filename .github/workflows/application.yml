@@ -22,5 +22,13 @@ jobs:
           curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/LucasBonanno/desafio-api-alelo-lucas-bonanno-casanova/dispatches --data '{"event_type": "build_application" }'
         env:
           NAME: ${{ vars.NAME_VARIABLE }}
+      - name: Get Test Results
+        run: |
+          echo "Test Results: $(cat test-results.json)"
+      - name: Check Results
+        uses: actions/github-check-run@v2
+        with:
+          check_run_name: Test Results
+          check_run_output: ${{ steps.get-test-results.outputs.test-results }}
 
 
