@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 
 @org.springframework.context.annotation.Configuration // TODO -> só funfa com @bean
-public class Configuration {
+public class ConfigManoGusta {
     @Value( "${NAME}" )
     private String name;
     @Bean
